@@ -1,17 +1,47 @@
 class Animal {
+  static remainingAnimals = 0;
 
+  constructor(name, species) {
+    this.name = name;
+    this.species = species;
+    this.energy = 100;
+    Animal.remainingAnimals++;
+  }
+
+  attack(target) {
+    if (this.energy >= 20) {
+      console.log(`${this.name} attacks ${target.name}!`);
+      this.energy -= 20;
+    } else {
+      console.log(`${this.name} does not have enough energy to attack.`);
+    }
+  }
+
+  eat() {
+    this.energy += 10;
+    console.log(`${this.name} is eating. Energy level: ${this.energy}`);
+  }
 }
 
 class Bird extends Animal {
-  
+  constructor(name, species, canFly) {
+    super(name, species);
+    this.canFly = canFly;
+  }
 }
 
 class Mammal extends Animal {
-
+  constructor(name, species, furColor) {
+    super(name, species);
+    this.furColor = furColor;
+  }
 }
 
 class Reptile extends Animal {
-
+  constructor(name, species, coldBlooded) {
+    super(name, species);
+    this.coldBlooded = coldBlooded;
+  }
 }
 
 
